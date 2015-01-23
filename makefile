@@ -61,12 +61,14 @@ release: clean classes javadoc jar
 # Compiles all of the classes in the project
 #
 classes:
+	mkdir -p $(BIN)
 	$(JC) $(JFLAGS) -d $(BIN) $(foreach package, $(PACKAGES), $(SRC)/$(package)/*.java) 
 
 #
 # Compiles the project verbosely with all of the java compiler messages
 #
 verbose:
+	mkdir -p $(BIN)
 	$(JC) -version -Xlint $(JFLAGS) -d $(BIN) $(foreach package, $(PACKAGES), $(SRC)/$(package)/*.java)
 	$(JC) -version -Xlint $(JTESTFLAGS) -d $(BIN) $(foreach package, $(TESTPACKAGES), $(SRC)/$(package)/*.java)
 
@@ -75,18 +77,21 @@ verbose:
 # Compiles and outputs all of the javadoc into the API folder
 #
 javadoc:
+	mkdir -p $(DOC)
 	$(JDOC) $(JDOCFLAGS) -d $(DOC) $(foreach package, $(PACKAGES), $(SRC)/$(package)/*.java)
 
 #
 # Compiles all of the tests in the project
 #
 tests:
+	mkdir -p $(BIN)
 	$(JC) $(JTESTFLAGS) -d $(BIN) $(foreach package, $(TESTPACKAGES), $(SRC)/$(package)/*.java)
 
 #
 # Jars the project into a convenient jar output
 #
 jar: 
+	mkdir -p $(OUT)
 	cd $(BIN) && $(JAR) cvf ../$(OUT)/$(NAME)-$(VERSION).jar $(foreach package, $(PACKAGES), $(package)/*.class)
 
 
