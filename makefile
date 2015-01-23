@@ -62,7 +62,6 @@ release: clean classes javadoc jar
 #
 classes:
 	$(JC) $(JFLAGS) -d $(BIN) $(foreach package, $(PACKAGES), $(SRC)/$(package)/*.java) 
-	cp $(SCRIPTS) $(BIN)
 
 #
 # Compiles the project verbosely with all of the java compiler messages
@@ -70,7 +69,6 @@ classes:
 verbose:
 	$(JC) -version -Xlint $(JFLAGS) -d $(BIN) $(foreach package, $(PACKAGES), $(SRC)/$(package)/*.java)
 	$(JC) -version -Xlint $(JTESTFLAGS) -d $(BIN) $(foreach package, $(TESTPACKAGES), $(SRC)/$(package)/*.java)
-	cp $(SCRIPTS) $(BIN)
 
 
 #
@@ -84,7 +82,6 @@ javadoc:
 #
 tests:
 	$(JC) $(JTESTFLAGS) -d $(BIN) $(foreach package, $(TESTPACKAGES), $(SRC)/$(package)/*.java)
-	cp $(SCRIPTS) $(BIN)
 
 #
 # Jars the project into a convenient jar output
