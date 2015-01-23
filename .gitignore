@@ -1,0 +1,14 @@
+# Hidden files #
+.*
+
+# Autosaves #
+*~
+.*~
+\#*\#
+
+# Binary Files #
+bin
+
+# Class Files #
+*.class
+
