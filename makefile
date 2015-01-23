@@ -42,7 +42,7 @@ JTESTFLAGS = -classpath $(LIB)/hamcrest-core-1.3.jar:$(LIB)/junit-4.11.jar -sour
 #
 # The location of the java packages
 #
-PACKAGES = emex/xml
+PACKAGES = emex/xml emex/xml/parse
 TESTPACKAGES = test/emex test/emex/xml
 
 #
